@@ -845,7 +845,8 @@ html body #standort .mbt .btn:not(.wh){background:rgba(255,255,255,.95)!importan
 
 /* --- Desktop: sticky stage, implant comes apart while scrolling --- */
 @media (min-width:1000px) and (min-height:600px){
- .imx{height:330vh;--top:84px;--H:calc(100vh - 104px)}
+ .imx{--top:84px;--H:calc(100vh - 104px)}
+ .imx-track{height:330vh}
  .imx-hw{position:absolute;left:0;right:0;top:clamp(104px,13vh,140px);z-index:2;pointer-events:none}
  .imx-head{max-width:calc(50% - (100vh - 102px) * .2152 - 30px)}
  .imx-head h2{font-size:clamp(30px,2.9vw,46px);max-width:none}
@@ -909,6 +910,12 @@ html body #standort .mbt .btn:not(.wh){background:rgba(255,255,255,.95)!importan
  #ueber .s2r{position:relative;z-index:3;margin-top:-72px;background:#fff;border-radius:28px!important;padding:28px 22px 6px;box-shadow:0 -22px 46px -28px rgba(19,40,110,.35);transform:translate3d(0,var(--cy,0px),0)}
 }
 </style>
+<style>/* Implantat-Block: CTA (same style as the «Krone in 60 Min.» button) */
+.imx-cta{position:relative;z-index:4;display:flex;justify-content:center;padding-top:clamp(18px,3vh,34px);padding-bottom:clamp(56px,7vw,96px)}
+.imx-kc{justify-content:center}
+html body #implantat .imx-kc .btn{background:transparent!important;color:var(--blue)!important;border:1px solid var(--blue)!important;box-shadow:none!important;--fill:rgba(29,79,232,.08)}
+@media (max-width:999px),(max-height:599px){.imx-cta{padding:8px 0 0}.imx-kc{flex-direction:column;gap:14px}}
+</style>
 </head>
 <body>
 <header class="over" id="hdr"><div class="wrap nav">
@@ -932,11 +939,11 @@ html body #standort .mbt .btn:not(.wh){background:rgba(255,255,255,.95)!importan
 
 <section class="bn" id="roentgen" aria-labelledby="bnh"><div class="wrap"><div class="bnc"><canvas class="bnp" aria-hidden="true"></canvas><div class="bnt"><span class="eb"><i></i>Cost: CHF 180</span><h2 id="bnh">Digital <em>2D diagnostics</em> and X-ray</h2><p>Digital X-ray with a reduced radiation dose for an immediate, precise assessment of bone and root canals.</p><div class="bnm"><button class="btn" type="button" data-open>Choose an appointment<span aria-hidden="true">→</span></button><span class="bnn">or call us: <a href="tel:+41799187249">+41 79 918 72 49</a></span></div></div><div class="bni"><video class="bnv" autoplay muted loop playsinline preload="none" disablepictureinpicture aria-label="Digital X-ray unit in our practice"><source src="../video/roentgen.webm" type="video/webm"><source src="../video/roentgen.mp4" type="video/mp4"></video></div></div></div></section>
 
-<section class="imx" id="implantat" aria-labelledby="imxh"><div class="wrap imx-hw"><div class="imx-head"><span class="eb"><i></i>Implantology</span><h2 id="imxh">Implants with <em>Swiss precision</em></h2></div></div><div class="imx-stage"><div class="wrap imx-grid">
+<section class="imx" id="implantat" aria-labelledby="imxh"><div class="wrap imx-hw"><div class="imx-head"><span class="eb"><i></i>Implantology</span><h2 id="imxh">Implants with <em>Swiss precision</em></h2></div></div><div class="imx-track"><div class="imx-stage"><div class="wrap imx-grid">
 
 <figure class="imx-fig" role="img" aria-label="Dental implant: crown, abutment and implant"><img class="imx-p ip-abut" src="../img/implant-abut.webp" alt="" loading="lazy" decoding="async" style="left:35.729%;top:34.126%;width:41.250%;z-index:1"><img class="imx-p ip-screw" src="../img/implant-screw.webp" alt="" loading="lazy" decoding="async" style="left:48.438%;top:60.045%;width:49.583%;z-index:2"><img class="imx-p ip-crown" src="../img/implant-crown.webp" alt="" loading="lazy" decoding="async" style="left:1.771%;top:0.673%;width:69.583%;z-index:3"></figure>
 <div class="imx-cards"><article class="imx-card c1 L"><span class="imx-n" aria-hidden="true">01</span><h3>Swiss implant quality</h3><p class="imx-sub">Proven Straumann implants</p><p class="imx-tx">We rely on high-quality implant systems from Straumann – developed and manufactured in Switzerland.</p></article><article class="imx-card c2 R"><span class="imx-n" aria-hidden="true">02</span><h3>Individual treatment planning</h3><p class="imx-sub">Precisely tailored to you</p><p class="imx-tx">Every implant restoration is planned individually – tailored to your dental situation and needs.</p></article><article class="imx-card c3 L"><span class="imx-n" aria-hidden="true">03</span><h3>Dental prosthetics on site</h3><p class="imx-sub">Everything from one source</p><p class="imx-tx">Crowns and bridges are made directly in our practice – for short distances and efficient treatment.</p></article><article class="imx-card c4 R"><span class="imx-n" aria-hidden="true">04</span><h3>Personal care</h3><p class="imx-sub">In good hands from the start</p><p class="imx-tx">We accompany you from the first consultation through the procedure to regular follow-up care.</p></article></div>
-</div></div></section>
+</div></div></div><div class="wrap imx-cta"><div class="kc imx-kc"><button class="btn" type="button" data-open data-svc="Implantat (Straumann)" data-title="Appointment for an implant"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 3.5c1.5-.8 3 .2 4.5.2s3-1 4.5-.2c1.6.9 1.4 3.4.6 5.1-.5 1-1.2 1.4-2.3 1.4H9.2c-1.1 0-1.8-.4-2.3-1.4-.8-1.7-1-4.2.6-5.1z"/><path d="M9.5 13h5M9.8 16h4.4M10.3 19h3.4M12 10v11"/></svg>Request an implant consultation<span class="kar">→</span></button><span class="kn"><i></i>Straumann implant from CHF 2500</span></div></div></section>
 
 <footer id="standort" class="ft"><canvas class="pnet" aria-hidden="true"></canvas><div class="wrap">
 <div class="ft1"><h2 class="fth">How to find us</h2>
@@ -1389,7 +1396,7 @@ html.js .hcard h1.in .l3::before{animation:t4 .8s cubic-bezier(.2,.8,.2,1) 1.05s
 (function(){
 var sec=document.getElementById('implantat');if(!sec)return;
 var fig=sec.querySelector('.imx-fig'),crown=fig.querySelector('.ip-crown'),screw=fig.querySelector('.ip-screw');
-var cards=[].slice.call(sec.querySelectorAll('.imx-card'));
+var cards=[].slice.call(sec.querySelectorAll('.imx-card')),track=sec.querySelector('.imx-track')||sec;
 var desk=matchMedia('(min-width:1000px) and (min-height:600px)');
 function cl(v){return v<0?0:v>1?1:v}
 function ss(a,b,v){var t=cl((v-a)/(b-a));return t*t*(3-2*t)}
@@ -1400,7 +1407,7 @@ function setE(e){ /* e: 0 = assembled, 1 = exploded (photo layout, 960 units wid
 }
 var tick=false;
 function frame(){tick=false;
- var r=sec.getBoundingClientRect(),vh=innerHeight;
+ var r=track.getBoundingClientRect(),vh=innerHeight;
  if(desk.matches){
   var p=cl(-r.top/Math.max(1,r.height-vh));
   setE(ss(.04,.42,p));
@@ -1446,6 +1453,13 @@ addEventListener('scroll',req,{passive:true});addEventListener('resize',req);
 if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){f.classList.add('on');o.disconnect()}},{threshold:.45}).observe(f)}else f.classList.add('on');
 frame();
 })();
+</script>
+<script>/* Booking popup: preset topic and title from the button that opened it (data-svc / data-title) */
+(function(){var d=document.getElementById('dlg');if(!d)return;var h=d.querySelector('.dp h3'),def=h?h.textContent:'';
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-open]');if(!b)return;
+ if(h)h.textContent=b.getAttribute('data-title')||def;
+ var v=b.getAttribute('data-svc');var r=d.querySelector('input[name="svc"]'+(v?'[value="'+v+'"]':''));if(r)r.checked=true;
+});})();
 </script>
 </body>
 </html>
