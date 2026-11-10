@@ -875,11 +875,15 @@ html body #standort .mbt .btn:not(.wh){background:rgba(255,255,255,.95)!importan
  .imx{padding:clamp(56px,9vw,90px) 0}
  .imx-head{text-align:left}
  .imx-fig{width:min(34vw,170px);aspect-ratio:300/1100;margin:24px auto 18px}
- .imx-cards{display:grid;gap:14px;max-width:620px;margin:0 auto}
- .imx-card{transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity .9s ease}
+ /* stacking cards: each card sticks under the header, the next one slides over it */
+ .imx-cards{display:grid;gap:26vh;max-width:620px;margin:0 auto;padding-bottom:4vh}
+ .imx-card{position:sticky;align-self:start;top:calc(83px + var(--k,0) * 12px);transform-origin:50% 0;box-shadow:0 -10px 34px -18px rgba(19,40,110,.28),0 18px 50px -24px rgba(19,40,110,.25);transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity .9s ease}
+ .imx-card.c2{--k:1}.imx-card.c3{--k:2}.imx-card.c4{--k:3}
+ .imx-card::before{content:"";position:absolute;inset:0;background:#131a24;opacity:var(--dim,0);pointer-events:none;z-index:1;border-radius:inherit}
  .imx-card.L{transform:translateX(-60px);opacity:0}
  .imx-card.R{transform:translateX(60px);opacity:0}
- .imx-card.on{transform:none;opacity:1}
+ .imx-card.on{transform:scale(var(--sc,1));opacity:1}
+ .imx-card.done{transition:none}
  .imx-card h3{margin-top:58px}
  .imx-n{font-size:96px}
 }
@@ -1467,13 +1471,17 @@ function frame(){tick=false;
  }else{
   var f=sec.querySelector('.imx-fig').getBoundingClientRect();
   setE(ss(0,1,(vh*.85-f.top)/(vh*.55)));
-  cards.forEach(function(c){c.style.transform='';c.style.opacity=''});
+  cards.forEach(function(c,i){c.style.transform='';c.style.opacity='';
+   var n=cards[i+1],k=0;
+   if(n){var a=c.getBoundingClientRect(),b=n.getBoundingClientRect();k=cl((a.bottom-b.top)/Math.max(1,a.height))}
+   c.style.setProperty('--sc',(1-.06*k).toFixed(4));c.style.setProperty('--dim',(.10*k).toFixed(3));
+  });
  }
 }
 function req(){if(!tick){tick=true;requestAnimationFrame(frame)}}
 addEventListener('scroll',req,{passive:true});addEventListener('resize',req);
 if(desk.addEventListener)desk.addEventListener('change',req);
-if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.25});cards.forEach(function(c){io.observe(c)})}else cards.forEach(function(c){c.classList.add('on')});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add('on');setTimeout(function(){t.classList.add('done')},1100);io.unobserve(t)}})},{threshold:.25});cards.forEach(function(c){io.observe(c)})}else cards.forEach(function(c){c.classList.add('on')});
 frame();
 })();
 </script>
