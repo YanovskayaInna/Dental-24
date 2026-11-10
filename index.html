@@ -844,23 +844,34 @@ html body #standort .mbt .btn:not(.wh){background:rgba(255,255,255,.95)!importan
 .imx-card p.imx-tx{position:relative;margin:0;font:400 14.5px/1.6 Inter,system-ui,sans-serif;color:var(--mut,#5b6575)}
 
 /* --- Desktop: sticky stage, implant comes apart while scrolling --- */
-@media (min-width:1000px) and (min-height:720px){
- .imx{height:330vh}
+@media (min-width:1000px) and (min-height:600px){
+ .imx{height:330vh;--top:84px;--H:calc(100vh - 104px)}
+ .imx-hw{position:absolute;left:0;right:0;top:clamp(104px,13vh,140px);z-index:2;pointer-events:none}
+ .imx-head{max-width:calc(50% - 170px)}
+ .imx-head h2{font-size:clamp(30px,2.9vw,46px);max-width:none}
  .imx-stage{position:sticky;top:0;height:100vh}
  .imx-grid{height:100%;max-width:1440px;margin:0 auto}
- .imx-head{position:absolute;top:clamp(104px,13vh,140px);left:var(--px,48px);max-width:calc(50% - 170px - var(--px,48px))}
- .imx-head h2{font-size:clamp(30px,2.9vw,46px);max-width:none}
- .imx-fig{position:absolute;left:50%;top:84px;bottom:18px;aspect-ratio:300/1100;transform:translateX(-50%)}
- .imx-card{position:absolute;width:min(360px,27vw);will-change:transform,opacity}
+ .imx-fig{position:absolute;left:50%;top:var(--top);bottom:18px;aspect-ratio:300/1100;transform:translateX(-50%)}
+ .imx-card{position:absolute;width:min(360px,27vw);will-change:transform,opacity;padding:clamp(16px,2.6vh,30px) clamp(20px,2.2vw,30px)}
+ .imx-n{font-size:clamp(60px,11vh,112px);top:calc(clamp(60px,11vh,112px) * -.13)}
+ .imx-card h3{margin-top:calc(clamp(60px,11vh,112px) * .6)}
+ .imx-card p.imx-tx{font-size:clamp(13px,1.9vh,14.5px)}
+ .imx-sub{margin-bottom:clamp(6px,1.2vh,12px)}
  .imx-card.L{right:calc(50% + 120px)}
  .imx-card.R{left:calc(50% + 120px)}
- .imx-card.c1{top:calc(84px + 27vh)}
- .imx-card.c3{top:calc(84px + 60vh)}
- .imx-card.c2{top:calc(84px + 9vh)}
- .imx-card.c4{top:calc(84px + 44vh)}
+ .imx-card.c1{top:calc(var(--top) + var(--H) * .30)}
+ .imx-card.c2{top:calc(var(--top) + var(--H) * .06)}
+ .imx-card.c3{top:calc(var(--top) + var(--H) * .64)}
+ .imx-card.c4{top:calc(var(--top) + var(--H) * .48)}
+}
+@media (min-width:1000px) and (min-height:600px) and (max-height:820px){
+ .imx-card.c1{top:calc(var(--top) + var(--H) * .04)}
+ .imx-card.c2{top:calc(var(--top) + var(--H) * .14)}
+ .imx-card.c3{top:calc(var(--top) + var(--H) * .53)}
+ .imx-card.c4{top:calc(var(--top) + var(--H) * .62)}
 }
 /* --- Mobile / short screens: implant on top, cards below --- */
-@media (max-width:999px),(max-height:719px){
+@media (max-width:999px),(max-height:599px){
  .imx{padding:clamp(56px,9vw,90px) 0}
  .imx-head{text-align:left}
  .imx-fig{width:min(34vw,170px);aspect-ratio:300/1100;margin:24px auto 18px}
@@ -897,8 +908,8 @@ html body #standort .mbt .btn:not(.wh){background:rgba(255,255,255,.95)!importan
 
 <section class="bn" id="roentgen" aria-labelledby="bnh"><div class="wrap"><div class="bnc"><canvas class="bnp" aria-hidden="true"></canvas><div class="bnt"><span class="eb"><i></i>Kosten: 180 Franken</span><h2 id="bnh">Digitale <em>2D-Diagnostik</em> und Röntgen</h2><p>Digitale Röntgenaufnahme mit reduzierter Strahlendosis für eine sofortige, präzise Beurteilung von Knochen und Kanälen.</p><div class="bnm"><button class="btn" type="button" data-open>Termin auswählen<span aria-hidden="true">→</span></button><span class="bnn">oder rufen Sie an: <a href="tel:+41799187249">+41 79 918 72 49</a></span></div></div><div class="bni"><video class="bnv" autoplay muted loop playsinline preload="none" disablepictureinpicture aria-label="Digitales 3D-Röntgengerät in unserer Praxis"><source src="video/roentgen.webm" type="video/webm"><source src="video/roentgen.mp4" type="video/mp4"></video></div></div></div></section>
 
-<section class="imx" id="implantat" aria-labelledby="imxh"><div class="imx-stage"><div class="wrap imx-grid">
-<div class="imx-head"><span class="eb"><i></i>Implantologie</span><h2 id="imxh">Implantate mit <em>Schweizer Präzision</em></h2></div>
+<section class="imx" id="implantat" aria-labelledby="imxh"><div class="wrap imx-hw"><div class="imx-head"><span class="eb"><i></i>Implantologie</span><h2 id="imxh">Implantate mit <em>Schweizer Präzision</em></h2></div></div><div class="imx-stage"><div class="wrap imx-grid">
+
 <figure class="imx-fig"><svg class="ip-svg" viewBox="0 -170 300 1100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zahnimplantat: Krone, Abutment und Implantat"><defs>
 <linearGradient id="m1" x1="0" x2="1" y1="0" y2="0">
 <stop offset="0" stop-color="#7f8895"/><stop offset=".12" stop-color="#c3c9d2"/><stop offset=".3" stop-color="#ffffff"/>
@@ -1437,7 +1448,7 @@ var sec=document.getElementById('implantat');if(!sec)return;
 var svg=sec.querySelector('.imx-fig svg'),crown=svg.querySelector('.ip-crown'),screw=svg.querySelector('.ip-screw');
 var cards=[].slice.call(sec.querySelectorAll('.imx-card'));
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var desk=matchMedia('(min-width:1000px) and (min-height:720px)');
+var desk=matchMedia('(min-width:1000px) and (min-height:600px)');
 function cl(v){return v<0?0:v>1?1:v}
 function ss(a,b,v){var t=cl((v-a)/(b-a));return t*t*(3-2*t)}
 function setE(e){ /* e: 0 = assembled, 1 = exploded */
