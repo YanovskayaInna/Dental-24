@@ -883,7 +883,6 @@ html body #standort .mbt .btn:not(.wh){background:rgba(255,255,255,.95)!importan
  .imx-card h3{margin-top:58px}
  .imx-n{font-size:96px}
 }
-@media (prefers-reduced-motion:reduce){.imx-card,.imx-card.L,.imx-card.R{transform:none!important;opacity:1!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -1447,7 +1446,6 @@ html.js .hcard h1.in .l3::before{animation:t4 .8s cubic-bezier(.2,.8,.2,1) 1.05s
 var sec=document.getElementById('implantat');if(!sec)return;
 var svg=sec.querySelector('.imx-fig svg'),crown=svg.querySelector('.ip-crown'),screw=svg.querySelector('.ip-screw');
 var cards=[].slice.call(sec.querySelectorAll('.imx-card'));
-var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var desk=matchMedia('(min-width:1000px) and (min-height:600px)');
 function cl(v){return v<0?0:v>1?1:v}
 function ss(a,b,v){var t=cl((v-a)/(b-a));return t*t*(3-2*t)}
@@ -1458,7 +1456,6 @@ function setE(e){ /* e: 0 = assembled, 1 = exploded */
 var tick=false;
 function frame(){tick=false;
  var r=sec.getBoundingClientRect(),vh=innerHeight;
- if(reduce){setE(1);return}
  if(desk.matches){
   var p=cl(-r.top/Math.max(1,r.height-vh));
   setE(ss(.04,.42,p));
